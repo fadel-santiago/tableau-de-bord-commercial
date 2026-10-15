@@ -105,22 +105,6 @@ Les observations ne prouvent pas la causalité ; elles servent à **prioriser le
 
 `CSV brut` → `Validation / nettoyage Python` → `CSV analytique + SQLite` → `SQL / KPI` → `Power BI ou Streamlit` → `Décisions commerciales`
 
-## Publier sur GitHub
-
-Après décompression du projet :
-
-```bash
-git init
-git add .
-git commit -m "feat: commercial BI dashboard portfolio"
-git branch -M main
-# Créer un dépôt GitHub vide nommé tableau-de-bord-commercial, puis :
-git remote add origin https://github.com/VOTRE-IDENTIFIANT/tableau-de-bord-commercial.git
-git push -u origin main
-```
-
-Le fichier `.pbix` n'est pas inclus, car sa génération nécessite Power BI Desktop. Ajouter une capture d'écran réelle dans `assets/` après avoir créé le rapport.
-
 ## English summary
 
 **Commercial sales analytics portfolio project:** deterministic synthetic order data, Python cleaning and quality checks, SQLite SQL queries, interactive Streamlit KPI dashboard, and Power BI Desktop build guide with DAX measures. Built for decision support; all sales data is fabricated for demonstration purposes.
