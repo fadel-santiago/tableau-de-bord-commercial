@@ -1,0 +1,19 @@
+-- Import data/processed/ventes_nettoyees.csv and name the table Ventes.
+-- Set order_date to Date; revenue_eur / unit_price_eur / discount_pct to Decimal Number.
+-- Set year and quantity to Whole Number.
+
+Chiffre d'affaires = SUM(Ventes[revenue_eur])
+
+Commandes réalisées = CALCULATE(DISTINCTCOUNT(Ventes[order_id]), Ventes[status] = "Completed")
+
+Clients actifs = CALCULATE(DISTINCTCOUNT(Ventes[customer_id]), Ventes[status] = "Completed")
+
+Panier moyen = DIVIDE([Chiffre d'affaires], [Commandes réalisées])
+
+CA N-1 =
+VAR AnneeEnCours = SELECTEDVALUE(Ventes[year])
+RETURN CALCULATE([Chiffre d'affaires], REMOVEFILTERS(Ventes[year]), Ventes[year] = AnneeEnCours - 1)
+
+Croissance CA annuelle % = DIVIDE([Chiffre d'affaires] - [CA N-1], [CA N-1])
+
+Taux d'annulation % = DIVIDE(CALCULATE(COUNTROWS(Ventes), Ventes[status] = "Cancelled"), COUNTROWS(Ventes))
